@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "455928924402",
+    "firebase_url": "https://flutter-motogp-default-rtdb.firebaseio.com",
+    "project_id": "flutter-motogp",
+    "storage_bucket": "flutter-motogp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455928924402:android:35ef9dd951e5e10631e86b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_moto_gp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn8ERRB6G6AueXwOYtCI0fxCjApAEuZ_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
