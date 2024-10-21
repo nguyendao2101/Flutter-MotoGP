@@ -23,4 +23,9 @@ class ImageAssest {
   //calendar
   static String angleRightBlack = '$baseImagePath/angle_right_black.png';
   static String angleRightWhite = '$baseImagePath/angle_right_white.png';
+
+  // results& standings
+  static String backgroundResults = '$baseImagePath/backgroundResults.png';
+  static String backgroundStanding = '$baseImagePath/backgroundStanding.png';
+  static String muiTen = '$baseImagePath/muiTen.png';
 }
