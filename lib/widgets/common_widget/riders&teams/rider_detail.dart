@@ -54,29 +54,30 @@ class RiderDetailScreen extends StatelessWidget {
                     child: Stack(
                       children: [
                         // Hình ảnh của rider
-                        Positioned.fill(
-                          top: 100,
-                          right: -800,
+
+
+                        Positioned(
+                          top: -120,
+                          left: 10,
                           child: rider['ImageRacer'] != ''
-                              ? Image.network(
-                                  rider['ImageRacer'],
-                                  height: 250,
-                                  width: 200,
-                                )
-                              : const Icon(Icons.person,
-                                  size: 250, color: Colors.grey),
-                        ),
+                            ? Image.network(
+                          rider['ImageRacer'],
+                          height: 600,
+                          width: 400,
+                        )
+                            : const Icon(Icons.person,
+                            size: 250, color: Colors.grey),),
                         // Thông tin của rider
                         Positioned(
-                          top: 16,
-                          left: 64,
+                          top: 310,
+                          left: 50,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 '#${rider['Id']}',
                                 style: const TextStyle(
-                                    fontSize: 36,
+                                    fontSize: 20,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -84,7 +85,7 @@ class RiderDetailScreen extends StatelessWidget {
                               Text(
                                 rider['Name'],
                                 style: const TextStyle(
-                                    fontSize: 68,
+                                    fontSize: 24,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white),
                               ),
@@ -93,66 +94,80 @@ class RiderDetailScreen extends StatelessWidget {
                                 children: [
                                   Image.network(
                                     rider['ImageCountry'],
-                                    height: 30,
+                                    height: 18,
                                   ),
                                   _sizeBoxW4(),
                                   Text(
                                     rider['Country'],
                                     style: const TextStyle(
-                                        fontSize: 24, color: Colors.white),
+                                        fontSize: 18, color: Colors.white),
                                   ),
                                   _sizeBoxW4(),
                                   const Text(
                                     '|',
                                     style: TextStyle(
-                                        color: Colors.grey, fontSize: 20),
+                                        color: Colors.grey, fontSize: 18),
                                   ),
                                   _sizeBoxW4(),
                                   Text(
                                     rider['Team'],
                                     style: const TextStyle(
-                                        fontSize: 24, color: Colors.white),
+                                        fontSize: 18, color: Colors.white),
                                   ),
+
                                 ],
                               ),
+
                             ],
                           ),
                         ),
                         Positioned(
-                          top: 450,
-                          left: 70,
+                          top: 490,
+                          left: 2,
                           child: Container(
                             height: 130,
-                            width: 450,
+                            width: 360,
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 39, 33, 33),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(16.0),
-                              child: Row(
-                                children: [
-                                  _currentSeason(
-                                      'POSITION', rider['Position'].toString()),
-                                  _verticalDivider(),
-                                  _currentSeason(
-                                      'POINTS', rider['Points'].toString()),
-                                  _verticalDivider(),
-                                  _currentSeason('VICTORIES',
-                                      rider['Victories'].toString()),
-                                ],
+                              child: Center(
+                                child: Row(
+                                  children: [
+                                    _currentSeason(
+                                        'POSITION', rider['Position'].toString()),
+                                    _verticalDivider(),
+                                    _currentSeason(
+                                        'POINTS', rider['Points'].toString()),
+                                    _verticalDivider(),
+                                    _currentSeason('VICTORIES',
+                                        rider['Victories'].toString()),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
                         Positioned(
-                          top: 400,
-                          left: 70,
+                          top: 440,
+                          left: 2,
+                          child: Container(
+                            color: const Color(0xff4A4947),
+                            width: MediaQuery.of(context).size.width, // Đặt chiều rộng tùy ý
+                            height: 2, // Đặt chiều cao tùy ý
+                          ),
+                        ),
+
+                        Positioned(
+                          top: 450,
+                          left: 0,
                           child: Row(
                             children: [
                               Image.asset(
                                 ImageAssest.redFlag,
-                                height: 50,
+                                height: 30,
                               ),
                               const Text(
                                 'Current Season',
@@ -165,8 +180,8 @@ class RiderDetailScreen extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                          top: 630,
-                          left: 195,
+                          top: 640,
+                          right: 20,
                           child: InkWell(
                             onTap: () {
                               // Get.to(() => const ResultsAndStandingsView());
@@ -176,7 +191,7 @@ class RiderDetailScreen extends StatelessWidget {
                                 const Text(
                                   'R E S U L T   &   S T A N D I N G S',
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 12,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -192,15 +207,15 @@ class RiderDetailScreen extends StatelessWidget {
                           ),
                         ),
                         Positioned(
-                          top: 700,
-                          left: 70,
+                          top: 680,
+                          left: 2,
                           child: InkWell(
                             onTap: () {
                               // Get.to(() => const RidersAndTeamsRidersView());
                             },
                             child: Container(
                               height: 110,
-                              width: 450,
+                              width: 360,
                               decoration: BoxDecoration(
                                 color: const Color.fromARGB(255, 39, 33, 33),
                                 borderRadius: BorderRadius.circular(8.0),
@@ -268,15 +283,15 @@ class RiderDetailScreen extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 50, top: 50, bottom: 20),
+              padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
               child: Row(
                 children: [
-                  Image.asset(ImageAssest.redFlag, height: 44),
+                  Image.asset(ImageAssest.redFlag, height: 30),
                   const Text(
                     'Rider Stats',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 30,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold),
                   )
                 ],
@@ -302,7 +317,7 @@ class RiderDetailScreen extends StatelessWidget {
 
   Padding _rowResultsTotal() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -335,7 +350,7 @@ class RiderDetailScreen extends StatelessWidget {
 
   Padding _rowResultsMotoGP() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -368,7 +383,7 @@ class RiderDetailScreen extends StatelessWidget {
 
   Padding _rowResultsMoto2() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -398,10 +413,12 @@ class RiderDetailScreen extends StatelessWidget {
       ),
     );
   }
-
+  // eventName.length > 15
+  // ? '${eventName.substring(0, 12)}...'
+  //     : eventName;
   Padding _rowResultsMoto3() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -433,9 +450,10 @@ class RiderDetailScreen extends StatelessWidget {
   }
 
   Container _containerResultDetail(String text, String number) {
+    String displayText = text.length > 7 ? '${text.substring(0, 7)}...' : text;
     return Container(
-      height: 200,
-      width: 300,
+      height: 100,
+      width: 60,
       decoration: BoxDecoration(
         color: Colors.white, // Màu nền của Container
         borderRadius: BorderRadius.circular(6), // Bo góc
@@ -453,13 +471,13 @@ class RiderDetailScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            text,
-            style: const TextStyle(fontSize: 20, color: Colors.grey),
+            displayText,
+            style: const TextStyle(fontSize: 10, color: Colors.grey),
           ),
           Text(
             number,
             style: const TextStyle(
-                fontSize: 100,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
                 color: Colors.black),
           )
@@ -470,7 +488,7 @@ class RiderDetailScreen extends StatelessWidget {
 
   Padding _textResult(String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         children: [
           ElevatedButton(
@@ -506,7 +524,7 @@ class RiderDetailScreen extends StatelessWidget {
 
   Widget _currentSeason(String name, String number) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
         children: [
           Text(
