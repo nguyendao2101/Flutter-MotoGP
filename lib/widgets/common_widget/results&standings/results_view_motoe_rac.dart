@@ -43,7 +43,7 @@ class _ResultsAndStandingsResultsMotogpRacState
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      _grandsPrixMonth('MotoGP RAC'),
+                      _grandsPrixMonth('MotoE RAC'),
                     ],
                   ),
                 ),

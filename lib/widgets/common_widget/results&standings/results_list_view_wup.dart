@@ -166,61 +166,8 @@ class SliverListResultsMotoGPWUP extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Positioned(
-                      top: 50,
-                      left: 380,
-                      child: Text(
-                        controller.extractNumbers(result['Id']),
-                        style: const TextStyle(
-                            fontSize: 20,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Positioned(
-                      top: 50,
-                      left: 480,
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(RiderDetailScreen(
-                            rider: riderDetails,
-                          ));
-                        },
-                        child: Text(
-                          riderDetails['Name'],
-                          style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 55,
-                      left: 780,
-                      child: Image.network(
-                        riderDetails['ImageCountry'],
-                        height: 20,
-                      ),
-                    ),
-                    Positioned(
-                      top: 50,
-                      left: 840,
-                      child: Text(
-                        riderDetails['Team'],
-                        style:
-                        const TextStyle(fontSize: 20, color: Colors.grey),
-                      ),
-                    ),
-                    Positioned(
-                      top: 45,
-                      left: 1540,
-                      child: Text(
-                        result['Gap'],
-                        style:
-                        const TextStyle(fontSize: 20, color: Colors.grey),
-                      ),
-                    ),
+
+
                   ],
                 );
               },
