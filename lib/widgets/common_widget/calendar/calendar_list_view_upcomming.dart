@@ -107,7 +107,7 @@ class GrandPrixCard extends StatelessWidget {
                           left: 20,
                           child: Image.network(
                             // grandPrixImage,
-                            calendar['ImageCountry'],
+                            calendar['Image'],
                             height: 100,
                             width: 100,
                             fit: BoxFit.cover,
@@ -124,7 +124,7 @@ class GrandPrixCard extends StatelessWidget {
                                   //image country
                                   Image.network(
                                     // grandCountry,
-                                    calendar['ImageDetail'],
+                                    calendar['ImageCountry'],
                                     height: 20,
                                   ),
                                   const SizedBox(

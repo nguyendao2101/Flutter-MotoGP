@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/view/home_view.dart';
 import 'package:flutter_moto_gp/view/more_view.dart';
 import 'package:flutter_moto_gp/view/results_view.dart';
+import 'package:flutter_moto_gp/view/user_view.dart';
 import 'package:flutter_moto_gp/view/watch_view.dart';
 import 'package:flutter_moto_gp/view_model/main_screen_view_model.dart';
 import 'package:get/get.dart';
@@ -50,7 +51,11 @@ class _HomeUserViewState extends State<MainScreenUserView>
           children: [
             Text('     '),
             Image.asset(ImageAssest.logoappMoto, height: 35,),
-            Image.asset(ImageAssest.helmet, height: 30,),
+            InkWell(
+              onTap: (){
+                Get.to(() => const InfoUserView());
+              },
+                child: Image.asset(ImageAssest.helmet, height: 30,)),
           ],
         ),
       ),

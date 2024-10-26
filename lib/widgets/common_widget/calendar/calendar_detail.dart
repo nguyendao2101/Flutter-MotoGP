@@ -20,7 +20,7 @@ class CalendarDetail extends StatelessWidget {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: NetworkImage(calendar['Image']),
+                        image: NetworkImage(calendar['ImageDetail']),
                         fit: BoxFit.cover),
                   ),
                   child: Stack(

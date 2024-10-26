@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/riders_list_view.dart';
 import 'package:get/get.dart';
+
+import '../../../view_model/results_moto3_view_model.dart';
 import '../../../view_model/results_motogp_view_model.dart';
-import '../widgets/common/image_extention.dart';
+import '../../common/image_extention.dart';
 
 
-class HomeView extends StatelessWidget {
-  final controller = Get.put(RidersAndTeamsViewModels());
+class RidersMoto3View extends StatelessWidget {
+  final controller = Get.put(ResultsMoto3ViewModel());
 
-  HomeView({super.key});
+  RidersMoto3View({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,27 +19,14 @@ class HomeView extends StatelessWidget {
         child: RefreshIndicator(
           onRefresh: () async {
             await Future.wait([
-              controller.fetchRidersMotoGP(),
-              controller.fetchRidersMotoGPSubstitute(),
-              controller.fetchRidersMotoGPWildCardsAndTestRiders(),
+              controller.fetchRidersMoto3Official(),
+              controller.fetchRidersMoto3Substitute(),
+              controller.fetchRidersMoto3WildcardsAndTestRiders(),
             ]);
           },
           child: CustomScrollView(
             slivers: [
               // Sliver header
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                  child: Column(
-                    children: [
-                      _pictureAsianFacific(ImageAssest.homeCircuit, 250),
-                      const SizedBox(height: 20,),
-                      _pictureAsianFacific(ImageAssest.homePic, 100)
-                    ],
-                  ),
-                ),
-              ),
               SliverToBoxAdapter(
                 child: Padding(
                   padding:
@@ -52,14 +41,14 @@ class HomeView extends StatelessWidget {
 
               // SliverGrid for displaying riders
               Obx(() {
-                if (controller.ridersListMotoGP.isEmpty) {
+                if (controller.ridersListMoto3Official.isEmpty) {
                   return const SliverFillRemaining(
                     child: Center(child: CircularProgressIndicator()),
                   );
                 } else {
                   return SliverListRiders(
                     controller: controller,
-                    listDS: controller.ridersListMotoGP,
+                    listDS: controller.ridersListMoto3Official,
                   );
                 }
               }),
@@ -79,14 +68,14 @@ class HomeView extends StatelessWidget {
 
               Obx(
                     () {
-                  if (controller.ridersListMotoGP.isEmpty) {
+                  if (controller.ridersListMoto3WildcardsAndTestRiders.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
                     return SliverListRiders(
                       controller: controller,
-                      listDS: controller.ridersListMotoGPWildCardsAndTestRiders,
+                      listDS: controller.ridersListMoto3WildcardsAndTestRiders,
                     );
                   }
                 },
@@ -106,14 +95,14 @@ class HomeView extends StatelessWidget {
 
               Obx(
                     () {
-                  if (controller.ridersListMotoGP.isEmpty) {
+                  if (controller.ridersListMoto3Substitute.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
                     return SliverListRiders(
                       controller: controller,
-                      listDS: controller.ridersListMotoGPSubstitute,
+                      listDS: controller.ridersListMoto3Substitute,
                     );
                   }
                 },
@@ -136,26 +125,6 @@ class HomeView extends StatelessWidget {
               color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ],
-    );
-  }
-  Container _pictureAsianFacific(String image, double height) {
-    return Container(
-      height: height,
-      color: const Color(0xff000000),
-      child: Align(
-        alignment: Alignment.center,
-        child: SizedBox(
-          child: PageView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              Image.asset(
-                image,
-                fit: BoxFit.cover,
-              )
-            ],
-          ),
-        ),
-      ),
     );
   }
 }

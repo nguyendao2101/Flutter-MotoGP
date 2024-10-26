@@ -28,4 +28,35 @@ class ImageAssest {
   static String backgroundResults = '$baseImagePath/backgroundResults.png';
   static String backgroundStanding = '$baseImagePath/backgroundStanding.png';
   static String muiTen = '$baseImagePath/muiTen.png';
+
+  //more
+  static String more1 = '$baseImagePath/more1.png';
+  static String more2 = '$baseImagePath/more2.png';
+  static String arrowsCross = '$baseImagePath/arrows_cross.png';
+  static String riders = '$baseImagePath/riders.png';
+  static String teams = '$baseImagePath/teams.png';
+  static String legends = '$baseImagePath/legends.png';
+
+  static String ticket = '$baseImagePath/ticket.png';
+  static String star = '$baseImagePath/star.png';
+  static String store = '$baseImagePath/store.png';
+  static String motoGPAuthentic = '$baseImagePath/motogp_authentic.png';
+
+  //users
+  static String user = '$baseImagePath/user.png';
+
+  //riders
+  static String search = '$baseImagePath/search.png';
+
+  //teams
+  static String sangNgang = '$baseImagePath/sangNgang.png';
+
+  //home
+  static String homeCircuit = '$baseImagePath/home_circuit.png';
+  static String homePic = '$baseImagePath/home_pic.png';
+
+
+
+
+
 }

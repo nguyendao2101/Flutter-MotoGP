@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/riders_list_view.dart';
 import 'package:get/get.dart';
+
 import '../../../view_model/results_motogp_view_model.dart';
-import '../widgets/common/image_extention.dart';
+import '../../common/image_extention.dart';
 
 
-class HomeView extends StatelessWidget {
+class RidersMotogpView extends StatelessWidget {
   final controller = Get.put(RidersAndTeamsViewModels());
 
-  HomeView({super.key});
+  RidersMotogpView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,19 +26,6 @@ class HomeView extends StatelessWidget {
           child: CustomScrollView(
             slivers: [
               // Sliver header
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-                  child: Column(
-                    children: [
-                      _pictureAsianFacific(ImageAssest.homeCircuit, 250),
-                      const SizedBox(height: 20,),
-                      _pictureAsianFacific(ImageAssest.homePic, 100)
-                    ],
-                  ),
-                ),
-              ),
               SliverToBoxAdapter(
                 child: Padding(
                   padding:
@@ -136,26 +124,6 @@ class HomeView extends StatelessWidget {
               color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ],
-    );
-  }
-  Container _pictureAsianFacific(String image, double height) {
-    return Container(
-      height: height,
-      color: const Color(0xff000000),
-      child: Align(
-        alignment: Alignment.center,
-        child: SizedBox(
-          child: PageView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              Image.asset(
-                image,
-                fit: BoxFit.cover,
-              )
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
