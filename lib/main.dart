@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_moto_gp/view/logo_app_view.dart';
 import 'package:get/get.dart';
 import 'firebase_options.dart';
 import 'view/main_screen_user_view.dart';
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: const LogoAppView(),
-      home: const MainScreenUserView(),
+      home: const LogoAppView(),
+      // home: const MainScreenUserView(),
     );
   }
 }

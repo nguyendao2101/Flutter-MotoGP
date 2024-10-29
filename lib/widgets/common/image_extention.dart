@@ -54,6 +54,8 @@ class ImageAssest {
   //home
   static String homeCircuit = '$baseImagePath/home_circuit.png';
   static String homePic = '$baseImagePath/home_pic.png';
+  static String arrowRight = '$baseImagePath/arrow_right.png';
+
 
 
 

@@ -23,7 +23,7 @@ class StandingsMainView extends StatefulWidget {
 class _ResultsMainViewState extends State<StandingsMainView> {
   int selectedYear = 2024;
   String selectedChampionship = "RIDERS'CHAMPIONSHIP";
-  String selectedCategory = 'MOTOGP';
+  String selectedCategory = 'motogp';
   Widget? resultWidget;
 
   void _showYearDialog() async {
