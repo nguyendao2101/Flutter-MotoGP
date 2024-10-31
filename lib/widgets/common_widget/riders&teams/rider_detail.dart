@@ -16,7 +16,7 @@ class RiderDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String team = rider['Team'];
     String formattedTeam =
-    team.length > 15 ? '${team.substring(0, 18)}...' : team;
+    team.length > 15 ? '${team.substring(0, 15)}...' : team;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
