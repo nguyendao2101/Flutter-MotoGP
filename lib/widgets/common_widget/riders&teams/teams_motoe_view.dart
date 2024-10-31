@@ -2,15 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/teams_list_view.dart';
 import 'package:get/get.dart';
 import '../../../view_model/riders_and_teams_teams_motoe_view_model.dart';
-import '../../../view_model/riders_and_teams_teams_motogp_view_model.dart';
 import '../../common/image_extention.dart';
 
 class TeamsMotoeView extends StatefulWidget {
   const TeamsMotoeView({super.key});
 
   @override
-  State<TeamsMotoeView> createState() =>
-      _RidersAndTeamsTeamsMotoGPState();
+  State<TeamsMotoeView> createState() => _RidersAndTeamsTeamsMotoGPState();
 }
 
 class _RidersAndTeamsTeamsMotoGPState extends State<TeamsMotoeView> {
@@ -32,7 +30,7 @@ class _RidersAndTeamsTeamsMotoGPState extends State<TeamsMotoeView> {
               SliverToBoxAdapter(
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [

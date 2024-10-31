@@ -1,12 +1,12 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/legends_main_view.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/riders_main_view.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/teams_main_view.dart';
 import 'package:get/get.dart';
 import '../../../view_model/results_motogp_view_model.dart';
-import '../../common/color_extentionn.dart';
 import '../../common/image_extention.dart';
-
 
 class RidersAndTeamsMainView extends StatefulWidget {
   final int initialIndex;
@@ -24,13 +24,15 @@ class _RidersAndTeamsViewState extends State<RidersAndTeamsMainView>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 5, vsync: this, initialIndex: widget.initialIndex);
+    _tabController = TabController(
+        length: 5, vsync: this, initialIndex: widget.initialIndex);
 
     _tabController?.addListener(() {
       selectTab = _tabController?.index ?? 0;
       setState(() {});
     });
   }
+
   @override
   void dispose() {
     _tabController?.dispose();
@@ -46,7 +48,7 @@ class _RidersAndTeamsViewState extends State<RidersAndTeamsMainView>
         slivers: [
           SliverAppBar(
             automaticallyImplyLeading: false, // Ẩn nút "back"
-            expandedHeight: 150, // Chiều cao tùy chỉnh cho AppBar khi mở rộng
+            expandedHeight: 120, // Chiều cao tùy chỉnh cho AppBar khi mở rộng
             floating: true, // Giúp AppBar cuộn theo nội dung
             snap: true, // AppBar biến mất ngay khi vuốt nhẹ lên
             pinned: false, // AppBar không giữ lại khi cuộn
@@ -63,7 +65,7 @@ class _RidersAndTeamsViewState extends State<RidersAndTeamsMainView>
                   ),
                 ),
                 child: SizedBox(
-                  height: 150,
+                  height: 120,
                   child: Column(
                     children: [
                       Expanded(
@@ -77,7 +79,10 @@ class _RidersAndTeamsViewState extends State<RidersAndTeamsMainView>
                               const Spacer(),
                               Padding(
                                 padding: const EdgeInsets.all(16.0),
-                                child: Image.asset(ImageAssest.search, height: 24,),
+                                child: Image.asset(
+                                  ImageAssest.search,
+                                  height: 24,
+                                ),
                               ),
                             ],
                           ),
@@ -88,11 +93,11 @@ class _RidersAndTeamsViewState extends State<RidersAndTeamsMainView>
                         child: Stack(
                           children: [
                             Positioned(
-                              top: 35,
-                              left: -25,
+                              top: 27,
+                              left: -50,
                               child: Padding(
                                 padding:
-                                const EdgeInsets.symmetric(horizontal: 20),
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: TabBar(
                                   controller: _tabController,
                                   indicatorColor: Colors.red,
@@ -110,7 +115,6 @@ class _RidersAndTeamsViewState extends State<RidersAndTeamsMainView>
                                 ),
                               ),
                             ),
-
                           ],
                         ),
                       ),
@@ -124,8 +128,8 @@ class _RidersAndTeamsViewState extends State<RidersAndTeamsMainView>
             child: TabBarView(
               controller: _tabController,
               children: [
-                RidersMainView(),
-                TeamsMainView(),
+                const RidersMainView(),
+                const TeamsMainView(),
                 LegendsMainView(),
               ],
             ),

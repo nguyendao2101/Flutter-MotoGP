@@ -92,24 +92,27 @@ class ResultsAndStandingsResultsMotogpWup extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _textHeaderBlack('Pos.'),
-                const SizedBox(
-                  width: 60,
+                Row(
+                  children: [
+                    _textHeaderBlack('Rider'),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    _textHeaderGrey('Team'),
+                  ],
                 ),
-                _textHeaderBlack('Rider'),
-                const SizedBox(
-                  width: 2,
-                ),
-                _textHeaderGrey('Team'),
-                const SizedBox(
-                  width: 70,
-                ),
-                _textHeaderBlack('Time'),
-                const SizedBox(
-                  width: 2,
-                ),
-                _textHeaderGrey('Gap 1st/Prev.'),
+                Row(
+                  children: [
+                    _textHeaderBlack('Time'),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    _textHeaderGrey('Gap 1st/Prev.'),
+                  ],
+                )
               ],
             ),
           ),

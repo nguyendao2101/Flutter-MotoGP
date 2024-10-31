@@ -37,15 +37,16 @@ class _YoutubeState extends State<Youtube> {
                 ProgressBar(
                   isExpanded: true,
                   colors: const ProgressBarColors(
-                    playedColor: Colors.amber,
-                    handleColor: Colors.amberAccent
-                  ),
+                      playedColor: Colors.amber,
+                      handleColor: Colors.amberAccent),
                 ),
                 const PlaybackSpeedButton(),
               ],
             ),
-            SizedBox(height: 20,),
-            Text('hello'),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text('hello'),
           ],
         ));
   }

@@ -17,6 +17,7 @@ class _CalendarAllEventsFbState extends State<CalendarUpcomming> {
   Widget build(BuildContext context) {
     final controller = Get.put(CalendarViewModel());
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () async {
@@ -37,52 +38,6 @@ class _CalendarAllEventsFbState extends State<CalendarUpcomming> {
           },
           child: CustomScrollView(
             slivers: [
-              // Sliver header
-              // SliverToBoxAdapter(
-              //   child: Padding(
-              //     padding:
-              //         const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-              //     child: Column(
-              //       children: [
-              //         _grandsPrixMonth('Calendar Add'),
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // Obx(() {
-              //   if (controller.addCalendarAllEvents.isEmpty) {
-              //     return const SliverFillRemaining(
-              //         child: Center(child: Text('No data added yet')));
-              //   } else {
-              //     return GrandPrixCard(
-              //       controller: controller,
-              //       listDS: controller.addCalendarAllEvents,
-              //     );
-              //   }
-              // }),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                  child: Column(
-                    children: [
-                      _grandsPrixMonth('October'),
-                    ],
-                  ),
-                ),
-              ),
-              Obx(() {
-                if (controller.allEventsOctober.isEmpty) {
-                  return const SliverFillRemaining(
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                } else {
-                  return GrandPrixCard(
-                    controller: controller,
-                    listDS: controller.allEventsOctober,
-                  );
-                }
-              }),
               SliverToBoxAdapter(
                 child: Padding(
                   padding:

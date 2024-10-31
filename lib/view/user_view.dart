@@ -1,9 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// ignore_for_file: library_private_types_in_public_api
 
-import '../view_model/login_view_model.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../widgets/common/color_extentionn.dart';
 import '../widgets/common/image_extention.dart';
 
@@ -11,12 +11,10 @@ class InfoUserView extends StatefulWidget {
   const InfoUserView({super.key});
 
   @override
-  State<InfoUserView> createState() => _InfoUserViewState();
+  _SettingsViewState createState() => _SettingsViewState();
 }
 
-class _InfoUserViewState extends State<InfoUserView> {
-  final controller = Get.put(LoginViewModel());
-
+class _SettingsViewState extends State<InfoUserView> {
   late DatabaseReference _database;
   late String _userId;
   Map<String, dynamic> _userData = {};
@@ -49,70 +47,31 @@ class _InfoUserViewState extends State<InfoUserView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.black, Color(0xFF3D0000)], // Các màu gradient
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
+    return Scaffold(
+      backgroundColor: ChatColor.background,
+      appBar: AppBar(
+        backgroundColor: ChatColor.background,
+        elevation: 0,
+        title: Text('User Information',
+            style: TextStyle(
+                color: ChatColor.almond,
+                fontSize: 25,
+                fontWeight: FontWeight.bold)),
+        centerTitle: true,
       ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          backgroundColor: ChatColor.background,
-          elevation: 0,
-          iconTheme: const IconThemeData(color: Colors.white),
-          title: Text('User Information',
-              style: TextStyle(
-                  color: ChatColor.almond,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold)),
-          centerTitle: true,
-        ),
-        body: Row(
-          children: [
-            Expanded(flex: 1, child: Container()),
-            Expanded(
-              flex: 2,
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 100),
-                      _buildProfileImage(),
-                      const SizedBox(height: 150),
-                      _buildUserInfoCard(),
-                      const SizedBox(height: 100),
-                      // _buildFavouriteMessagesCard(),
-                      ElevatedButton(
-                        onPressed: () {
-                          controller.onLogout();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 30,
-                            vertical: 20,
-                          ),
-                        ),
-                        child: const Text('Sign Out'),
-                      ),
-                      const SizedBox(height: 300),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Expanded(flex: 1, child: Container()),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 20),
+              _buildProfileImage(),
+              const SizedBox(height: 20),
+              _buildUserInfoCard(),
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );
@@ -192,6 +151,4 @@ class _InfoUserViewState extends State<InfoUserView> {
       ),
     );
   }
-
-
 }

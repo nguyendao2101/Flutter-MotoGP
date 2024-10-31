@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, prefer_typing_uninitialized_variables
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +10,8 @@ class ListViewLegends extends StatelessWidget {
   final controller;
   final RxList<Map<String, dynamic>> listDS;
 
-  const ListViewLegends({super.key, required this.controller, required this.listDS});
+  const ListViewLegends(
+      {super.key, required this.controller, required this.listDS});
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +23,22 @@ class ListViewLegends extends StatelessWidget {
       } else {
         return SliverList(
           delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
+            (BuildContext context, int index) {
               var rider = listDS[index];
               String teamName = rider['Team'] ?? '';
               String formattedTeamName = teamName.length > 8
                   ? '${teamName.substring(0, 8)}...'
                   : teamName;
               String name = rider['Name'] ?? '';
-              String formattedName = name.contains(' ')
-                  ? name.replaceAll(' ', '\n')
-                  : name;
+              String formattedName =
+                  name.contains(' ') ? name.replaceAll(' ', '\n') : name;
               return InkWell(
                 onTap: () {
                   Get.to(() => RidersLegendsDetail(rider: rider));
                 },
                 child: Card(
-                  margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  margin: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 8.0),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
@@ -63,16 +66,17 @@ class ListViewLegends extends StatelessWidget {
                           ),
                           rider['ImageRacer'] != ''
                               ? Positioned(
-                            bottom: 0,
-                            right: 10,
-                            child: Image.network(
-                              rider['ImageRacer'],
-                              height: 160,
-                            ),
-                          )
+                                  bottom: 0,
+                                  right: 10,
+                                  child: Image.network(
+                                    rider['ImageRacer'],
+                                    height: 160,
+                                  ),
+                                )
                               : const Center(
-                            child: Icon(Icons.person, size: 50, color: Colors.grey),
-                          ),
+                                  child: Icon(Icons.person,
+                                      size: 50, color: Colors.grey),
+                                ),
                           Positioned(
                             top: 15,
                             left: 15,
@@ -100,7 +104,6 @@ class ListViewLegends extends StatelessWidget {
                                   style: const TextStyle(color: Colors.white),
                                   overflow: TextOverflow.ellipsis,
                                 ),
-
                               ],
                             ),
                           )

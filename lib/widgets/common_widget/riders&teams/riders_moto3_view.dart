@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/riders_list_view.dart';
 import 'package:get/get.dart';
-
 import '../../../view_model/results_moto3_view_model.dart';
-import '../../../view_model/results_motogp_view_model.dart';
 import '../../common/image_extention.dart';
-
 
 class RidersMoto3View extends StatelessWidget {
   final controller = Get.put(ResultsMoto3ViewModel());
@@ -30,7 +27,7 @@ class RidersMoto3View extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Column(
                     children: [
                       _grandsPrixMonth('Official'),
@@ -57,7 +54,7 @@ class RidersMoto3View extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Column(
                     children: [
                       _grandsPrixMonth('Wildcards And Test Riders'),
@@ -67,8 +64,9 @@ class RidersMoto3View extends StatelessWidget {
               ),
 
               Obx(
-                    () {
-                  if (controller.ridersListMoto3WildcardsAndTestRiders.isEmpty) {
+                () {
+                  if (controller
+                      .ridersListMoto3WildcardsAndTestRiders.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
@@ -84,7 +82,7 @@ class RidersMoto3View extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Column(
                     children: [
                       _grandsPrixMonth('Substitute'),
@@ -94,7 +92,7 @@ class RidersMoto3View extends StatelessWidget {
               ),
 
               Obx(
-                    () {
+                () {
                   if (controller.ridersListMoto3Substitute.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),

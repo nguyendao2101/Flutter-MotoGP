@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/teams_moto2_view.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/teams_moto3_view.dart';
@@ -106,12 +108,10 @@ class _TeamsMainViewState extends State<TeamsMainView>
           _tabController?.animateTo(index);
         },
         style: ElevatedButton.styleFrom(
-          foregroundColor: _selectedTabIndex == index
-              ? Colors.white
-              : Colors.black,
-          backgroundColor: _selectedTabIndex == index
-              ? Colors.red
-              : Colors.white,
+          foregroundColor:
+              _selectedTabIndex == index ? Colors.white : Colors.black,
+          backgroundColor:
+              _selectedTabIndex == index ? Colors.red : Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(32),
           ),

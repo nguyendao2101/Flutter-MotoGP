@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/results&standings/result_view_motogp_wup.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/results&standings/results_view_moto2_rac.dart';
@@ -343,7 +342,6 @@ class _ResultsMainViewState extends State<ResultsMainView> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-
                         ],
                       ),
                       const SizedBox(
@@ -409,8 +407,8 @@ class _ResultsMainViewState extends State<ResultsMainView> {
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.black,
-                    minimumSize: const Size(
-                        200, 80), // Ensure button size is sufficient
+                    minimumSize:
+                        const Size(200, 80), // Ensure button size is sufficient
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -474,7 +472,7 @@ class _ResultsMainViewState extends State<ResultsMainView> {
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Color.fromARGB(255, 138, 2, 2),
+                    backgroundColor: const Color.fromARGB(255, 138, 2, 2),
                     minimumSize:
                         const Size(100, 50), // Đặt kích thước tối thiểu
                     shape: RoundedRectangleBorder(

@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:flutter_moto_gp/view_model/results_motogp_view_model.dart';
 import 'package:flutter_moto_gp/widgets/common/image_extention.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/results&standings/results_list_view_rac.dart';
 import 'package:get/get.dart';
@@ -21,7 +19,6 @@ class _ResultsAndStandingsResultsMotogpRacState
   final controllerRiders = Get.put(ResultsMoto2ViewModel());
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: RefreshIndicator(
@@ -40,7 +37,7 @@ class _ResultsAndStandingsResultsMotogpRacState
               SliverToBoxAdapter(
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -132,22 +129,25 @@ class _ResultsAndStandingsResultsMotogpRacState
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _textHeaderBlack('Pos.'),
-                const SizedBox(
-                  width: 2,
+                Row(
+                  children: [
+                    _textHeaderBlack('Pos.'),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    _textHeaderGrey('Pts'),
+                  ],
                 ),
-                _textHeaderGrey('Pts'),
-                const SizedBox(
-                  width: 60,
-                ),
-                _textHeaderBlack('Rider'),
-                const SizedBox(
-                  width: 2,
-                ),
-                _textHeaderGrey('Team'),
-                const SizedBox(
-                  width: 80,
+                Row(
+                  children: [
+                    _textHeaderBlack('Rider'),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    _textHeaderGrey('Team'),
+                  ],
                 ),
                 _textHeaderBlack('Time/Gap'),
               ],
@@ -161,14 +161,16 @@ class _ResultsAndStandingsResultsMotogpRacState
   Text _textHeaderBlack(String text) {
     return Text(
       text,
-      style: TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
+      style: TextStyle(
+          fontSize: 16, color: Colors.black, fontWeight: FontWeight.bold),
     );
   }
 
   Text _textHeaderGrey(String text) {
     return Text(
       text,
-      style: TextStyle(fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
+      style: TextStyle(
+          fontSize: 16, color: Colors.grey, fontWeight: FontWeight.bold),
     );
   }
 

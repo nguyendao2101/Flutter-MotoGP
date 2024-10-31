@@ -39,7 +39,7 @@ class GrandPrixCardFinished extends StatelessWidget {
                 var calendar = calendarList[index];
                 String eventName = calendar['EventName'];
                 String formattedEventName = eventName.length > 15
-                    ? '${eventName.substring(0, 12)}...'
+                    ? '${eventName.substring(0, 8)}...'
                     : eventName;
 
                 return InkWell(
@@ -199,7 +199,7 @@ class GrandPrixCardFinished extends StatelessWidget {
                                   vertical: 4, horizontal: 8),
                               child: Center(
                                 child: Text(
-                                  ' ${calendar['Category']} ',
+                                  ' ${calendar['Category'].toString().toUpperCase()} ',
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white,

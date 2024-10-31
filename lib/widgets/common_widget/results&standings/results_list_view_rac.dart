@@ -44,11 +44,8 @@ class SliverListResults extends StatelessWidget {
 
                 // team
                 String team = riderDetails['Team'];
-                String formattedTeam = team.length > 15
-                    ? '${team.substring(0, 12)}...'
-                    : team;
-
-
+                String formattedTeam =
+                    team.length > 15 ? '${team.substring(0, 12)}...' : team;
 
                 return Stack(
                   children: [
@@ -77,25 +74,33 @@ class SliverListResults extends StatelessWidget {
                             children: [
                               Column(
                                 children: [
-                                  const SizedBox(height: 4,),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
                                   Text(
                                     '#${index + 1}',
                                     style: const TextStyle(
-                                        fontWeight: FontWeight.bold, fontSize: 26),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 26),
                                   ),
-                                  const SizedBox(height: 4,),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
                                   Text(
-                                    controller.zeroToSpace(result['Points']).toString(),
-
-                                    style:
-                                     const TextStyle(fontSize: 22, color: Colors.grey, fontWeight: FontWeight.bold),
+                                    controller
+                                        .zeroToSpace(result['Points'])
+                                        .toString(),
+                                    style: const TextStyle(
+                                        fontSize: 22,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
                               Text(
                                 result['Time'],
                                 style: const TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 14,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               )
@@ -104,10 +109,9 @@ class SliverListResults extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     Positioned(
                       top: 15,
-                      left: 35,
+                      left: 20,
                       child: Image.network(
                         riderDetails['ImageRacer'],
                         height: 90,
@@ -115,7 +119,7 @@ class SliverListResults extends StatelessWidget {
                     ),
                     Positioned(
                       top: 30,
-                      left: 130,
+                      left: 110,
                       child: Column(
                         children: [
                           Row(
@@ -127,11 +131,14 @@ class SliverListResults extends StatelessWidget {
                                     color: Colors.grey,
                                     fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(width: 2,),
-
+                              const SizedBox(
+                                width: 2,
+                              ),
                               InkWell(
-                                onTap: (){
-                                  Get.to(() => RiderDetailScreen(rider: riderDetails,));
+                                onTap: () {
+                                  Get.to(() => RiderDetailScreen(
+                                        rider: riderDetails,
+                                      ));
                                 },
                                 child: Text(
                                   formattedRiderName,
@@ -146,26 +153,26 @@ class SliverListResults extends StatelessWidget {
                         ],
                       ),
                     ),
-
                     Positioned(
                       top: 55,
-                      left: 130,
+                      left: 110,
                       child: Row(
                         children: [
                           Image.network(
                             riderDetails['ImageCountry'],
                             height: 12,
                           ),
-                          SizedBox(width: 4,),
+                          const SizedBox(
+                            width: 4,
+                          ),
                           Text(
                             formattedTeam,
-                            style:
-                            const TextStyle(fontSize: 16, color: Colors.grey),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.grey),
                           ),
                         ],
                       ),
                     ),
-
                   ],
                 );
               },

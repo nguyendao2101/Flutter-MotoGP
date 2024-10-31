@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../riders&teams/rider_detail.dart';
 
-
 class ResultsAndStandingsStadingsListView extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
   final controller;
@@ -30,10 +29,10 @@ class ResultsAndStandingsStadingsListView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           sliver: SliverList(
             delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
+              (BuildContext context, int index) {
                 var result = resultsList[index];
                 var riderDetails =
-                result['RiderDetails']; // Lấy thông tin tay đua
+                    result['RiderDetails']; // Lấy thông tin tay đua
                 // name
                 String riderName = riderDetails['Name'];
                 List<String> nameParts = riderName.split(' ');
@@ -45,9 +44,8 @@ class ResultsAndStandingsStadingsListView extends StatelessWidget {
 
                 // team
                 String team = riderDetails['Team'];
-                String formattedTeam = team.length > 15
-                    ? '${team.substring(0, 12)}...'
-                    : team;
+                String formattedTeam =
+                    team.length > 15 ? '${team.substring(0, 12)}...' : team;
 
                 return Stack(
                   children: [
@@ -61,21 +59,21 @@ class ResultsAndStandingsStadingsListView extends StatelessWidget {
                           borderRadius: BorderRadius.circular(8.0),
                           gradient: index == 0 //1
                               ? const LinearGradient(
-                            colors: [
-                              Color(0xFF1E201E),
-                              Color(0xFF4F1787)
-                            ], // Các màu gradient
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          )
+                                  colors: [
+                                    Color(0xFF1E201E),
+                                    Color(0xFF4F1787)
+                                  ], // Các màu gradient
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                )
                               : const LinearGradient(
-                            colors: [
-                              Colors.white,
-                              Colors.white
-                            ], // Gradient mặc định nếu id không phải là 1
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
+                                  colors: [
+                                    Colors.white,
+                                    Colors.white
+                                  ], // Gradient mặc định nếu id không phải là 1
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
@@ -93,13 +91,17 @@ class ResultsAndStandingsStadingsListView extends StatelessWidget {
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  const SizedBox(height: 4,),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
                                   Text(
                                     '#${index + 1}',
-                                    style:  TextStyle(
-                                        fontWeight: FontWeight.bold, fontSize: 26,
-                                      color: index == 0 ? Colors.white : Colors.black
-                                    ),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 26,
+                                        color: index == 0
+                                            ? Colors.white
+                                            : Colors.black),
                                   ),
                                 ],
                               ),
@@ -108,10 +110,12 @@ class ResultsAndStandingsStadingsListView extends StatelessWidget {
                                 children: [
                                   Text(
                                     result['Points'].toString(),
-                                    style:  TextStyle(
+                                    style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
-                                        color: index == 0 ? Colors.white : Colors.black),
+                                        color: index == 0
+                                            ? Colors.white
+                                            : Colors.black),
                                   ),
                                 ],
                               )
@@ -122,7 +126,7 @@ class ResultsAndStandingsStadingsListView extends StatelessWidget {
                     ),
                     Positioned(
                       top: 15,
-                      left: 15,
+                      left: 10,
                       child: Image.network(
                         riderDetails['ImageRacer'],
                         height: 90,
@@ -130,30 +134,37 @@ class ResultsAndStandingsStadingsListView extends StatelessWidget {
                     ),
                     Positioned(
                       top: 30,
-                      left: 120,
+                      left: 100,
                       child: Column(
                         children: [
                           Row(
                             children: [
                               Text(
                                 controller.extractNumbers(result['Id']),
-                                style:  TextStyle(
+                                style: TextStyle(
                                     fontSize: 20,
-                                    color: index == 0 ? Colors.white : Colors.black,
+                                    color: index == 0
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(width: 2,),
-
+                              const SizedBox(
+                                width: 2,
+                              ),
                               InkWell(
-                                onTap: (){
-                                  Get.to(() => RiderDetailScreen(rider: riderDetails,));
+                                onTap: () {
+                                  Get.to(() => RiderDetailScreen(
+                                        rider: riderDetails,
+                                      ));
                                 },
                                 child: Text(
                                   formattedRiderName,
-                                  style:  TextStyle(
+                                  style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
-                                      color: index == 0 ? Colors.white : Colors.black),
+                                      color: index == 0
+                                          ? Colors.white
+                                          : Colors.black),
                                 ),
                               ),
                             ],
@@ -163,18 +174,21 @@ class ResultsAndStandingsStadingsListView extends StatelessWidget {
                     ),
                     Positioned(
                       top: 55,
-                      left: 120,
+                      left: 100,
                       child: Row(
                         children: [
                           Image.network(
                             riderDetails['ImageCountry'],
                             height: 12,
                           ),
-                          SizedBox(width: 4,),
+                          const SizedBox(
+                            width: 4,
+                          ),
                           Text(
                             formattedTeam,
-                            style:
-                             TextStyle(fontSize: 16, color: index == 0 ? Colors.white : Colors.grey),
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: index == 0 ? Colors.white : Colors.grey),
                           ),
                         ],
                       ),
@@ -183,7 +197,7 @@ class ResultsAndStandingsStadingsListView extends StatelessWidget {
                 );
               },
               childCount:
-              resultsList.length, // Số lượng phần tử trong danh sách
+                  resultsList.length, // Số lượng phần tử trong danh sách
             ),
           ),
         );

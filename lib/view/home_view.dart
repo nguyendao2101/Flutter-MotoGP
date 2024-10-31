@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/riders_list_view.dart';
 import 'package:get/get.dart';
-import '../../../view_model/results_motogp_view_model.dart';
 import '../view_model/home_view_model.dart';
 import '../widgets/common/image_extention.dart';
 import '../widgets/common_widget/home/home_list_view.dart';
-
+import '../widgets/common_widget/watch/watch_list_view.dart';
 
 class HomeView extends StatelessWidget {
   final controller = Get.put(HomeViewModel());
@@ -28,6 +26,9 @@ class HomeView extends StatelessWidget {
               controller.fetchHomeNewsMotoGPEngine(),
               controller.fetchHomeNewsOliveiraUndergoes(),
               controller.fetchHomeNewsWillBastianini(),
+              controller.fetchHomeVideosDavidAlone(),
+              controller.fetchHomeVideosTheWait(),
+              controller.fetchHomeVideosTitlePendulum(),
             ]);
           },
           child: CustomScrollView(
@@ -36,11 +37,13 @@ class HomeView extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
                   child: Column(
                     children: [
                       _pictureAsianFacific(ImageAssest.homeCircuit, 250),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       _pictureAsianFacific(ImageAssest.homePic, 100)
                     ],
                   ),
@@ -49,7 +52,7 @@ class HomeView extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                   child: Column(
                     children: [
                       _homeTitle('Latest News'),
@@ -57,7 +60,27 @@ class HomeView extends StatelessWidget {
                   ),
                 ),
               ),
-
+              Obx(() {
+                if (controller.homeVideosDavidAlon.isEmpty) {
+                  return const SliverFillRemaining(
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                } else {
+                  return WatchListView(
+                    controller: controller,
+                    listDS: controller.homeVideosDavidAlon,
+                  );
+                }
+              }),
+              const SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    )
+                  ],
+                ),
+              ),
               // SliverGrid for displaying riders
               Obx(() {
                 if (controller.homeNews2024FIM.isEmpty) {
@@ -74,13 +97,15 @@ class HomeView extends StatelessWidget {
               const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               ),
 
               Obx(
-                    () {
+                () {
                   if (controller.homeNews37Points.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
@@ -97,13 +122,15 @@ class HomeView extends StatelessWidget {
               const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               ),
 
               Obx(
-                    () {
+                () {
                   if (controller.homeNewsBagnaiaGiven.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
@@ -116,17 +143,39 @@ class HomeView extends StatelessWidget {
                   }
                 },
               ),
-
               const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
+                  ],
+                ),
+              ),
+              Obx(() {
+                if (controller.homeVideosTheWait.isEmpty) {
+                  return const SliverFillRemaining(
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                } else {
+                  return WatchListView(
+                    controller: controller,
+                    listDS: controller.homeVideosTheWait,
+                  );
+                }
+              }),
+              const SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               ),
 
               Obx(
-                    () {
+                () {
                   if (controller.homeNewsGoldenAi.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
@@ -143,13 +192,15 @@ class HomeView extends StatelessWidget {
               const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               ),
 
               Obx(
-                    () {
+                () {
                   if (controller.homeNewsHasDucati.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
@@ -162,17 +213,41 @@ class HomeView extends StatelessWidget {
                   }
                 },
               ),
+              const SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    )
+                  ],
+                ),
+              ),
+
+              Obx(() {
+                if (controller.homeVideosTitlePendulum.isEmpty) {
+                  return const SliverFillRemaining(
+                    child: Center(child: CircularProgressIndicator()),
+                  );
+                } else {
+                  return WatchListView(
+                    controller: controller,
+                    listDS: controller.homeVideosTitlePendulum,
+                  );
+                }
+              }),
 
               const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               ),
 
               Obx(
-                    () {
+                () {
                   if (controller.homeNewsLetsTheGames.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
@@ -189,13 +264,15 @@ class HomeView extends StatelessWidget {
               const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               ),
 
               Obx(
-                    () {
+                () {
                   if (controller.homeNewsMotoGPEngine.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
@@ -212,13 +289,15 @@ class HomeView extends StatelessWidget {
               const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               ),
 
               Obx(
-                    () {
+                () {
                   if (controller.homeNewsOliveiraUndergoes.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
@@ -235,13 +314,15 @@ class HomeView extends StatelessWidget {
               const SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    SizedBox(height: 20,)
+                    SizedBox(
+                      height: 20,
+                    )
                   ],
                 ),
               ),
 
               Obx(
-                    () {
+                () {
                   if (controller.homeNewsWillBastianini.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
@@ -270,10 +351,14 @@ class HomeView extends StatelessWidget {
           style: const TextStyle(
               color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        Image.asset(ImageAssest.arrowRight, height: 28,),
+        Image.asset(
+          ImageAssest.arrowRight,
+          height: 28,
+        ),
       ],
     );
   }
+
   Container _pictureAsianFacific(String image, double height) {
     return Container(
       height: height,

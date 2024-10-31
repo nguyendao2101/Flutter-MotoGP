@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 
 class CalendarDetail extends StatelessWidget {
   final Map<String, dynamic> calendar;
@@ -8,6 +6,10 @@ class CalendarDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String eventName = calendar['EventName'];
+    String formattedEventName = eventName.length > 15
+        ? '${eventName.substring(0, 20)}...'
+        : eventName;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -28,7 +30,7 @@ class CalendarDetail extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                           color:
-                          Colors.black.withOpacity(0.8), // Đặt màu và độ mờ
+                              Colors.black.withOpacity(0.8), // Đặt màu và độ mờ
                         ),
                       ),
                       Positioned(
@@ -123,16 +125,14 @@ class CalendarDetail extends StatelessWidget {
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold),
                                       ),
-
                                     ],
                                   ),
                                 ),
-
                               ],
                             ),
                             const SizedBox(height: 32),
                             Text(
-                              '${calendar['EventName']}',
+                              formattedEventName,
                               style: const TextStyle(
                                   fontSize: 24,
                                   color: Colors.white,
@@ -161,7 +161,8 @@ class CalendarDetail extends StatelessWidget {
                                         foregroundColor: Colors.white,
                                         backgroundColor: Colors.red,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(4),
+                                          borderRadius:
+                                              BorderRadius.circular(4),
                                         ),
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 30,
@@ -178,7 +179,6 @@ class CalendarDetail extends StatelessWidget {
                                     const SizedBox(
                                       width: 12,
                                     ),
-
                                     ElevatedButton(
                                       onPressed: () {
                                         // Get.to(() =>
@@ -188,7 +188,8 @@ class CalendarDetail extends StatelessWidget {
                                         foregroundColor: Colors.white,
                                         backgroundColor: Colors.red,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(4),
+                                          borderRadius:
+                                              BorderRadius.circular(4),
                                         ),
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 30,
@@ -204,7 +205,9 @@ class CalendarDetail extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 12,),
+                                const SizedBox(
+                                  height: 12,
+                                ),
                                 ElevatedButton(
                                   onPressed: () {},
                                   style: ElevatedButton.styleFrom(

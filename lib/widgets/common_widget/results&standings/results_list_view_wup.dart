@@ -29,10 +29,10 @@ class SliverListResultsMotoGPWUP extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           sliver: SliverList(
             delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
+              (BuildContext context, int index) {
                 var result = resultsList[index];
                 var riderDetails =
-                result['RiderDetails']; // Lấy thông tin tay đua
+                    result['RiderDetails']; // Lấy thông tin tay đua
 
                 // name
                 String riderName = riderDetails['Name'];
@@ -45,9 +45,8 @@ class SliverListResultsMotoGPWUP extends StatelessWidget {
 
                 // team
                 String team = riderDetails['Team'];
-                String formattedTeam = team.length > 15
-                    ? '${team.substring(0, 12)}...'
-                    : team;
+                String formattedTeam =
+                    team.length > 15 ? '${team.substring(0, 12)}...' : team;
 
                 return Stack(
                   children: [
@@ -77,11 +76,14 @@ class SliverListResultsMotoGPWUP extends StatelessWidget {
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  const SizedBox(height: 4,),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
                                   Text(
                                     '#${index + 1}',
                                     style: const TextStyle(
-                                        fontWeight: FontWeight.bold, fontSize: 26),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 26),
                                   ),
                                 ],
                               ),
@@ -91,14 +93,14 @@ class SliverListResultsMotoGPWUP extends StatelessWidget {
                                   Text(
                                     result['Time'],
                                     style: const TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     result['Gap'],
-                                    style:
-                                    const TextStyle(fontSize: 12, color: Colors.grey),
+                                    style: const TextStyle(
+                                        fontSize: 10, color: Colors.grey),
                                   ),
                                 ],
                               )
@@ -109,7 +111,7 @@ class SliverListResultsMotoGPWUP extends StatelessWidget {
                     ),
                     Positioned(
                       top: 15,
-                      left: 15,
+                      left: 8,
                       child: Image.network(
                         riderDetails['ImageRacer'],
                         height: 90,
@@ -117,7 +119,7 @@ class SliverListResultsMotoGPWUP extends StatelessWidget {
                     ),
                     Positioned(
                       top: 30,
-                      left: 120,
+                      left: 100,
                       child: Column(
                         children: [
                           Row(
@@ -129,11 +131,14 @@ class SliverListResultsMotoGPWUP extends StatelessWidget {
                                     color: Colors.grey,
                                     fontWeight: FontWeight.bold),
                               ),
-                              SizedBox(width: 2,),
-
+                              const SizedBox(
+                                width: 2,
+                              ),
                               InkWell(
-                                onTap: (){
-                                  Get.to(() => RiderDetailScreen(rider: riderDetails,));
+                                onTap: () {
+                                  Get.to(() => RiderDetailScreen(
+                                        rider: riderDetails,
+                                      ));
                                 },
                                 child: Text(
                                   formattedRiderName,
@@ -150,29 +155,29 @@ class SliverListResultsMotoGPWUP extends StatelessWidget {
                     ),
                     Positioned(
                       top: 55,
-                      left: 120,
+                      left: 100,
                       child: Row(
                         children: [
                           Image.network(
                             riderDetails['ImageCountry'],
                             height: 12,
                           ),
-                          SizedBox(width: 4,),
+                          const SizedBox(
+                            width: 4,
+                          ),
                           Text(
                             formattedTeam,
-                            style:
-                            const TextStyle(fontSize: 16, color: Colors.grey),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.grey),
                           ),
                         ],
                       ),
                     ),
-
-
                   ],
                 );
               },
               childCount:
-              resultsList.length, // Số lượng phần tử trong danh sách
+                  resultsList.length, // Số lượng phần tử trong danh sách
             ),
           ),
         );

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/rider_detail.dart';
@@ -20,16 +22,15 @@ class SliverListRiders extends StatelessWidget {
       } else {
         return SliverList(
           delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
+            (BuildContext context, int index) {
               var rider = listDS[index];
               String teamName = rider['Team'];
               String formattedTeamName = teamName.length > 8
                   ? '${teamName.substring(0, 8)}...'
                   : teamName;
               String name = rider['Name'];
-              String formattedName = name.contains(' ')
-                  ? name.replaceAll(' ', '\n')
-                  : name;
+              String formattedName =
+                  name.contains(' ') ? name.replaceAll(' ', '\n') : name;
               return InkWell(
                 onTap: () {
                   Get.to(() => RiderDetailScreen(rider: rider));
@@ -64,68 +65,70 @@ class SliverListRiders extends StatelessWidget {
                           ),
                           rider['ImageRacer'] != ''
                               ? Positioned(
-                            top: 2,
-                            right: -45,
-                            child: Image.network(
-                              rider['ImageRacer'],
-                              height: 180,
-                            ),
-                          )
+                                  top: 2,
+                                  right: -45,
+                                  child: Image.network(
+                                    rider['ImageRacer'],
+                                    height: 180,
+                                  ),
+                                )
                               : const Center(
-                            child: Icon(Icons.person,
-                                size: 50, color: Colors.grey),
-                          ),
+                                  child: Icon(Icons.person,
+                                      size: 50, color: Colors.grey),
+                                ),
                           Positioned(
                             bottom: 5,
                             right: 10,
                             child: Text(
-                            '#${rider['Id']}',
-                            style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          ),),
+                              '#${rider['Id']}',
+                              style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ),
                           Positioned(
                             top: 15,
                             left: 15,
                             child: Text(
                               formattedName,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 28),
-                            overflow: TextOverflow.ellipsis,
-                          ),),
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 28),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                           Positioned(
                             bottom: 10,
                             left: 15,
                             child: Row(
-                            children: [
-                              Image.network(
-                                rider['ImageCountry'],
-                                height: 20,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                rider['Country'],
-                                style: const TextStyle(color: Colors.white),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              const SizedBox(width: 4),
-                              const Text('|',
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 20)),
-                              const SizedBox(width: 4),
-                              Text(
-                                formattedTeamName,
-                                style: const TextStyle(color: Colors.white),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
-                          ),)
+                              children: [
+                                Image.network(
+                                  rider['ImageCountry'],
+                                  height: 20,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  rider['Country'],
+                                  style: const TextStyle(color: Colors.white),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                const SizedBox(width: 4),
+                                const Text('|',
+                                    style: TextStyle(
+                                        color: Colors.grey, fontSize: 20)),
+                                const SizedBox(width: 4),
+                                Text(
+                                  formattedTeamName,
+                                  style: const TextStyle(color: Colors.white),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                          )
                         ],
                       ),
-
                     ],
                   ),
                 ),

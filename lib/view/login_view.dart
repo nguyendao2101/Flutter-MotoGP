@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/view/sign_up_view.dart';
 import 'package:flutter_moto_gp/view_model/login_view_model.dart';
 import 'package:get/get.dart';
-
-import '../widgets/common/color_extentionn.dart';
 import '../widgets/common/image_extention.dart';
 
 class LoginView extends StatefulWidget {
@@ -93,7 +91,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     _formPassword(controller),
                     const Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      padding: EdgeInsets.symmetric(horizontal: 12),
                       child: Text(
                         'Forgot password?',
                         style: TextStyle(
@@ -129,7 +127,7 @@ class _LoginViewState extends State<LoginView> {
                           borderRadius: BorderRadius.circular(4),
                         ),
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 165,
+                          horizontal: 150,
                           vertical: 10,
                         ),
                       ),
@@ -218,7 +216,8 @@ class _LoginViewState extends State<LoginView> {
               color: Colors.black), // Chữ màu đen để dễ nhìn trên nền trắng
           decoration: InputDecoration(
             labelText: 'Password',
-            labelStyle: TextStyle(color: Colors.black), // Nhãn màu xám nhạt
+            labelStyle:
+                const TextStyle(color: Colors.black), // Nhãn màu xám nhạt
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12), // Bo góc đường viền
               borderSide: BorderSide(
@@ -272,7 +271,7 @@ class _LoginViewState extends State<LoginView> {
             color: Colors.black), // Chữ màu đen để hiển thị rõ trên nền trắng
         decoration: InputDecoration(
           labelText: 'Email',
-          labelStyle: TextStyle(color: Colors.black), // Nhãn màu xám nhạt
+          labelStyle: const TextStyle(color: Colors.black), // Nhãn màu xám nhạt
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12), // Bo góc đường viền
             borderSide: BorderSide(

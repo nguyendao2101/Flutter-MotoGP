@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 
 class HomeDetail extends StatelessWidget {
   final Map<String, dynamic> home;
@@ -21,8 +19,7 @@ class HomeDetail extends StatelessWidget {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: NetworkImage(home['Image']),
-                        fit: BoxFit.cover),
+                        image: NetworkImage(home['Image']), fit: BoxFit.cover),
                   ),
                   child: Stack(
                     clipBehavior: Clip.none,
@@ -30,10 +27,9 @@ class HomeDetail extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                           color:
-                          Colors.black.withOpacity(0.4), // Đặt màu và độ mờ
+                              Colors.black.withOpacity(0.4), // Đặt màu và độ mờ
                         ),
                       ),
-
                     ],
                   ),
                 ),
@@ -60,14 +56,21 @@ class HomeDetail extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
-                          home['1'], style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+                          home['1'],
+                          style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
-                  ),),
+                  ),
+                ),
               ],
             ),
-            const SizedBox(height: 120,),
+            const SizedBox(
+              height: 120,
+            ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -78,13 +81,17 @@ class HomeDetail extends StatelessWidget {
                       children: [
                         Text(
                           home[i.toString()],
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.black),
                         ),
-                        const SizedBox(height: 20,),
+                        const SizedBox(
+                          height: 20,
+                        ),
                       ],
                     );
                   } else {
-                    return SizedBox.shrink(); // Trả về một widget trống nếu giá trị null
+                    return const SizedBox
+                        .shrink(); // Trả về một widget trống nếu giá trị null
                   }
                 }),
               ),

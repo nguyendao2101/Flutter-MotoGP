@@ -69,39 +69,6 @@ class _ResultsAndStandingsResultsMotogpRacState
                   );
                 }
               }),
-              // SliverToBoxAdapter(
-              //   child: Padding(
-              //     padding:
-              //         const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.start,
-              //       children: [
-              //         _grandsPrixMonth('MotoGP RAC Add'),
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // SliverToBoxAdapter(
-              //   child: Padding(
-              //     padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
-              //     child: Column(
-              //       children: [
-              //         _textInfomation(),
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // Obx(() {
-              //   if (controllerRiders.resultsMotoGPRACAdd.isEmpty) {
-              //     return const SliverFillRemaining(
-              //         child: Center(child: Text('No data added yet')));
-              //   } else {
-              //     return SliverListResults(
-              //       controller: controllerRiders,
-              //       listDS: controllerRiders.resultsMotoGPRACAdd,
-              //     );
-              //   }
-              // }),
             ],
           ),
         ),
@@ -130,22 +97,25 @@ class _ResultsAndStandingsResultsMotogpRacState
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _textHeaderBlack('Pos.'),
-                const SizedBox(
-                  width: 2,
+                Row(
+                  children: [
+                    _textHeaderBlack('Pos.'),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    _textHeaderGrey('Pts'),
+                  ],
                 ),
-                _textHeaderGrey('Pts'),
-                const SizedBox(
-                  width: 60,
-                ),
-                _textHeaderBlack('Rider'),
-                const SizedBox(
-                  width: 2,
-                ),
-                _textHeaderGrey('Team'),
-                const SizedBox(
-                  width: 80,
+                Row(
+                  children: [
+                    _textHeaderBlack('Rider'),
+                    const SizedBox(
+                      width: 2,
+                    ),
+                    _textHeaderGrey('Team'),
+                  ],
                 ),
                 _textHeaderBlack('Time/Gap'),
               ],

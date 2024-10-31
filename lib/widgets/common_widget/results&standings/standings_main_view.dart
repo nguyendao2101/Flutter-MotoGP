@@ -1,17 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_moto_gp/widgets/common_widget/results&standings/result_view_motogp_wup.dart';
-import 'package:flutter_moto_gp/widgets/common_widget/results&standings/results_view_moto2_rac.dart';
-import 'package:flutter_moto_gp/widgets/common_widget/results&standings/results_view_moto3_rac.dart';
-import 'package:flutter_moto_gp/widgets/common_widget/results&standings/results_view_motoe_rac.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/results&standings/standings_view_moto2.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/results&standings/standings_view_moto3.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/results&standings/standings_view_motoe.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/results&standings/standings_view_motogp.dart';
 import 'package:get/get.dart';
-
 import '../../common/image_extention.dart';
-import 'results_view_motogp_rac.dart';
 
 class StandingsMainView extends StatefulWidget {
   const StandingsMainView({super.key});
@@ -42,12 +35,12 @@ class _ResultsMainViewState extends State<StandingsMainView> {
           mainAxisSize: MainAxisSize.min,
           children: [2024, 2023, 2022, 2021, 2020]
               .map((year) => ListTile(
-            title: Text(
-              year.toString(),
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-            ),
-            onTap: () => Navigator.pop(context, year),
-          ))
+                    title: Text(
+                      year.toString(),
+                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    onTap: () => Navigator.pop(context, year),
+                  ))
               .toList(),
         ),
       ),
@@ -81,12 +74,12 @@ class _ResultsMainViewState extends State<StandingsMainView> {
             "BMW M AWARD"
           ]
               .map((type) => ListTile(
-            title: Text(
-              type.toUpperCase(),
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-            ),
-            onTap: () => Navigator.pop(context, type),
-          ))
+                    title: Text(
+                      type.toUpperCase(),
+                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    onTap: () => Navigator.pop(context, type),
+                  ))
               .toList(),
         ),
       ),
@@ -98,7 +91,6 @@ class _ResultsMainViewState extends State<StandingsMainView> {
       });
     }
   }
-
 
   void _showMotoDialog() async {
     final result = await showDialog<String>(
@@ -116,12 +108,12 @@ class _ResultsMainViewState extends State<StandingsMainView> {
           mainAxisSize: MainAxisSize.min,
           children: ['motogp', 'moto2', 'moto3', 'motoe']
               .map((moto) => ListTile(
-            title: Text(
-              moto.toUpperCase(),
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-            ),
-            onTap: () => Navigator.pop(context, moto),
-          ))
+                    title: Text(
+                      moto.toUpperCase(),
+                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    onTap: () => Navigator.pop(context, moto),
+                  ))
               .toList(),
         ),
       ),
@@ -133,8 +125,6 @@ class _ResultsMainViewState extends State<StandingsMainView> {
       });
     }
   }
-
-
 
   @override
   void initState() {
@@ -164,7 +154,7 @@ class _ResultsMainViewState extends State<StandingsMainView> {
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.black,
                     minimumSize:
-                    const Size(200, 80), // Đặt kích thước tối thiểu
+                        const Size(200, 80), // Đặt kích thước tối thiểu
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -175,7 +165,7 @@ class _ResultsMainViewState extends State<StandingsMainView> {
                     children: [
                       Column(
                         crossAxisAlignment:
-                        CrossAxisAlignment.start, // Align column to start
+                            CrossAxisAlignment.start, // Align column to start
                         children: [
                           const Text(
                             'Year',
@@ -210,7 +200,7 @@ class _ResultsMainViewState extends State<StandingsMainView> {
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.black,
                     minimumSize:
-                    const Size(200, 80), // Đặt kích thước tối thiểu
+                        const Size(200, 80), // Đặt kích thước tối thiểu
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -221,7 +211,7 @@ class _ResultsMainViewState extends State<StandingsMainView> {
                     children: [
                       Column(
                         crossAxisAlignment:
-                        CrossAxisAlignment.start, // Align column to start
+                            CrossAxisAlignment.start, // Align column to start
                         children: [
                           const Text(
                             'Event',
@@ -237,7 +227,6 @@ class _ResultsMainViewState extends State<StandingsMainView> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-
                         ],
                       ),
                       const SizedBox(
@@ -259,7 +248,7 @@ class _ResultsMainViewState extends State<StandingsMainView> {
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.black,
                     minimumSize:
-                    const Size(200, 80), // Đặt kích thước tối thiểu
+                        const Size(200, 80), // Đặt kích thước tối thiểu
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -270,7 +259,7 @@ class _ResultsMainViewState extends State<StandingsMainView> {
                     children: [
                       Column(
                         crossAxisAlignment:
-                        CrossAxisAlignment.start, // Align column to start
+                            CrossAxisAlignment.start, // Align column to start
                         children: [
                           const Text(
                             'Category',
@@ -317,9 +306,9 @@ class _ResultsMainViewState extends State<StandingsMainView> {
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Color.fromARGB(255, 138, 2, 2),
+                    backgroundColor: const Color.fromARGB(255, 138, 2, 2),
                     minimumSize:
-                    const Size(100, 50), // Đặt kích thước tối thiểu
+                        const Size(100, 50), // Đặt kích thước tối thiểu
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),

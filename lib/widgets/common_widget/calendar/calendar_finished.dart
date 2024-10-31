@@ -16,6 +16,7 @@ class _CalendarAllEventsFbState extends State<CalendarFinished> {
   Widget build(BuildContext context) {
     final controller = Get.put(CalendarViewModel());
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () async {

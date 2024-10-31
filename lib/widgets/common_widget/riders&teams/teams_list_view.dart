@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_use_of_protected_member, prefer_typing_uninitialized_variables
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/teams_detail.dart';
@@ -21,7 +23,7 @@ class ListViewTeams extends StatelessWidget {
       } else {
         return SliverList(
           delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
+            (BuildContext context, int index) {
               var result = resultsList[index];
               var riderDetails = result['RiderDetails'];
               String teamName = result['Team'];
@@ -32,9 +34,9 @@ class ListViewTeams extends StatelessWidget {
               return InkWell(
                 onTap: () {
                   Get.to(() => RidersAndTeamsTeamsDetail(
-                    team: result,
-                    teamsDetail: riderDetails,
-                  ));
+                        team: result,
+                        teamsDetail: riderDetails,
+                      ));
                 },
                 child: Card(
                   margin: const EdgeInsets.symmetric(
@@ -84,13 +86,17 @@ class ListViewTeams extends StatelessWidget {
                               children: [
                                 Text(
                                   riderDetails['Name'],
-                                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 16),
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                const SizedBox(height: 10,),
+                                const SizedBox(
+                                  height: 10,
+                                ),
                                 Text(
                                   riderDetails['TeamMateName'],
-                                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                                  style: const TextStyle(
+                                      color: Colors.white, fontSize: 16),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],
@@ -101,11 +107,11 @@ class ListViewTeams extends StatelessWidget {
                             right: 10,
                             child: result['Image'] != ''
                                 ? Image.network(
-                              result['Image'],
-                              height: 300,
-                            )
+                                    result['Image'],
+                                    height: 300,
+                                  )
                                 : const Icon(Icons.person,
-                                size: 50, color: Colors.grey),
+                                    size: 50, color: Colors.grey),
                           ),
                         ],
                       ),

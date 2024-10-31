@@ -102,18 +102,20 @@ class _ResultsAndStandingsStadingsMotogpState
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _textHeaderBlack('Pos.'),
-                const SizedBox(
-                  width: 60,
+                Row(
+                  children: [
+                    _textHeaderBlack('Rider'),
+                    const SizedBox(
+                      width: 4,
+                    ),
+                    _textHeaderGrey('Team'),
+                  ],
                 ),
-                _textHeaderBlack('Rider'),
                 const SizedBox(
-                  width: 4,
-                ),
-                _textHeaderGrey('Team'),
-                const SizedBox(
-                  width: 130,
+                  width: 5,
                 ),
                 _textHeaderBlack('Pts.'),
 

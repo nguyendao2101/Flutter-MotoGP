@@ -2,14 +2,14 @@
 
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_moto_gp/widgets/common_widget/home/home_detail.dart';
+import 'package:flutter_moto_gp/widgets/common_widget/watch/watch_detail.dart';
 import 'package:get/get.dart';
 
-class SliverListHome extends StatelessWidget {
+class WatchListView extends StatelessWidget {
   final controller;
   final RxList<Map<String, dynamic>> listDS;
 
-  const SliverListHome(
+  const WatchListView(
       {super.key, required this.controller, required this.listDS});
 
   @override
@@ -23,15 +23,15 @@ class SliverListHome extends StatelessWidget {
         return SliverList(
           delegate: SliverChildBuilderDelegate(
             (BuildContext context, int index) {
-              var home = listDS[index];
-              String homeName = home['Title'];
+              var watch = listDS[index];
+              String homeName = watch['Title'];
               String formattedHomeName = homeName.length > 30
-                  ? '${homeName.substring(0, 36)}...'
+                  ? '${homeName.substring(0, 31)}...'
                   : homeName;
 
               return InkWell(
                 onTap: () {
-                  Get.to(() => HomeDetail(home: home));
+                  Get.to(() => WatchDetail(watch: watch));
                 },
                 child: Card(
                   margin: const EdgeInsets.symmetric(
@@ -47,7 +47,7 @@ class SliverListHome extends StatelessWidget {
                           Container(
                             height: 280,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.black,
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(8.0),
                                 topRight: Radius.circular(8.0),
@@ -67,14 +67,14 @@ class SliverListHome extends StatelessWidget {
                               children: [
                                 Expanded(
                                   flex: 2, // Chiếm 2/3 chiều cao
-                                  child: home['id'] != ''
+                                  child: watch['id'] != ''
                                       ? ClipRRect(
                                           borderRadius: const BorderRadius.only(
                                             topLeft: Radius.circular(8.0),
                                             topRight: Radius.circular(8.0),
                                           ),
                                           child: Image.network(
-                                            home['Image'],
+                                            watch['Image'],
                                             fit: BoxFit.cover,
                                             width: double.infinity,
                                           ),
@@ -91,13 +91,13 @@ class SliverListHome extends StatelessWidget {
                                   flex: 1, // Chiếm 1/3 chiều cao
                                   child: Container(
                                     color: Colors
-                                        .white, // Màu nền của phần còn lại
+                                        .black, // Màu nền của phần còn lại
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          home['Title'] != ''
+                          watch['Title'] != ''
                               ? Positioned(
                                   bottom: 30,
                                   left: 10,
@@ -106,7 +106,7 @@ class SliverListHome extends StatelessWidget {
                                     style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
-                                        color: Colors.black),
+                                        color: Colors.white),
                                   ),
                                 )
                               : const Center(

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/riders_list_view.dart';
 import 'package:get/get.dart';
-import '../../../view_model/results_motogp_view_model.dart';
-import '../view_model/home_view_model.dart';
+import '../view_model/watch_view_model.dart';
 import '../widgets/common/image_extention.dart';
-import '../widgets/common_widget/home/home_list_view.dart';
-
+import '../widgets/common_widget/watch/watch_list_view.dart';
 
 class WatchView extends StatelessWidget {
-  final controller = Get.put(HomeViewModel());
+  final controller = Get.put(WatchViewModel());
 
   WatchView({super.key});
 
@@ -19,219 +16,281 @@ class WatchView extends StatelessWidget {
         child: RefreshIndicator(
           onRefresh: () async {
             await Future.wait([
-              controller.fetchHomeNews2024FIM(),
-              controller.fetchHomeNews37Points(),
-              controller.fetchHomeBagnaiaGiven(),
-              controller.fetchHomeNewsGoldenAi(),
-              controller.fetchHomeHasDucati(),
-              controller.fetchHomeNewsLetsTheGames(),
-              controller.fetchHomeNewsMotoGPEngine(),
-              controller.fetchHomeNewsOliveiraUndergoes(),
-              controller.fetchHomeNewsWillBastianini(),
+              controller.fetchWatchActionClipsBestMotoGP(),
+              controller.fetchWatchActionClipsotMotoGPRace(),
+              controller.fetchWatchActionClipsTheMostMind(),
+              controller.fetchWatchAfterTheFlagAustrianGP2024(),
+              controller.fetchWatchAfterTheFlagBagnaiaJoins(),
+              controller.fetchWatchAfterTheFlagPerfect(),
+              controller.fetchWatchInterviewsPodiumTrio(),
+              controller.fetchWatchInterviewsTop3React(),
+              controller.fetchWatchInterviewsWhenRossi(),
+              controller.fetchWatchLatesVideosItsTime(),
+              controller.fetchWatchLatesVideosMar2024(),
+              controller.fetchWatchLatesVideosMar12th(),
+              controller.fetchWatchMustSeeBestMotoGP(),
+              controller.fetchWatchMustSeeBigDrama(),
+              controller.fetchWatchMustSeeTheEmotion(),
             ]);
           },
           child: CustomScrollView(
             slivers: [
               // SliverGrid for displaying riders
+              _title('Action Clips'),
               Obx(
-                    () {
-                  if (controller.homeNewsMotoGPEngine.isEmpty) {
+                () {
+                  if (controller.watchActionClipsBestMotoGP.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
-                    return SliverListHome(
+                    return WatchListView(
                       controller: controller,
-                      listDS: controller.homeNewsMotoGPEngine,
+                      listDS: controller.watchActionClipsBestMotoGP,
                     );
                   }
                 },
               ),
 
-              const SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,)
-                  ],
-                ),
-              ),
-
+              _h20(),
               Obx(
-                    () {
-                  if (controller.homeNewsOliveiraUndergoes.isEmpty) {
+                () {
+                  if (controller.watchActionClipsTheMostMind.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
-                    return SliverListHome(
+                    return WatchListView(
                       controller: controller,
-                      listDS: controller.homeNewsOliveiraUndergoes,
+                      listDS: controller.watchActionClipsTheMostMind,
                     );
                   }
                 },
               ),
-
-              const SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,)
-                  ],
-                ),
-              ),
+              _title('After The Flag'),
               Obx(
-                    () {
-                  if (controller.homeNewsWillBastianini.isEmpty) {
+                () {
+                  if (controller.watchAfterTheFlagAustrianGP2024.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
-                    return SliverListHome(
+                    return WatchListView(
                       controller: controller,
-                      listDS: controller.homeNewsWillBastianini,
+                      listDS: controller.watchAfterTheFlagAustrianGP2024,
                     );
                   }
                 },
               ),
-              const SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,)
-                  ],
-                ),
-              ),
-              Obx(() {
-                if (controller.homeNews2024FIM.isEmpty) {
-                  return const SliverFillRemaining(
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                } else {
-                  return SliverListHome(
-                    controller: controller,
-                    listDS: controller.homeNews2024FIM,
-                  );
-                }
-              }),
-              const SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,)
-                  ],
-                ),
-              ),
-
+              _h20(),
               Obx(
-                    () {
-                  if (controller.homeNews37Points.isEmpty) {
+                () {
+                  if (controller.watchAfterTheFlagBagnaiaJoins.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
-                    return SliverListHome(
+                    return WatchListView(
                       controller: controller,
-                      listDS: controller.homeNews37Points,
+                      listDS: controller.watchAfterTheFlagBagnaiaJoins,
                     );
                   }
                 },
               ),
-
-              const SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,)
-                  ],
-                ),
-              ),
-
+              _h20(),
               Obx(
-                    () {
-                  if (controller.homeNewsBagnaiaGiven.isEmpty) {
+                () {
+                  if (controller.watchAfterTheFlagPerfect.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
-                    return SliverListHome(
+                    return WatchListView(
                       controller: controller,
-                      listDS: controller.homeNewsBagnaiaGiven,
+                      listDS: controller.watchAfterTheFlagPerfect,
                     );
                   }
                 },
               ),
-
-              const SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,)
-                  ],
-                ),
-              ),
-
+              _title('Interviews and Reactions'),
               Obx(
-                    () {
-                  if (controller.homeNewsGoldenAi.isEmpty) {
+                () {
+                  if (controller.watchInterviewsPodiumTrio.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
-                    return SliverListHome(
+                    return WatchListView(
                       controller: controller,
-                      listDS: controller.homeNewsGoldenAi,
+                      listDS: controller.watchInterviewsPodiumTrio,
                     );
                   }
                 },
               ),
-
-              const SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,)
-                  ],
-                ),
-              ),
-
+              _h20(),
               Obx(
-                    () {
-                  if (controller.homeNewsHasDucati.isEmpty) {
+                () {
+                  if (controller.watchInterviewsTop3React.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
-                    return SliverListHome(
+                    return WatchListView(
                       controller: controller,
-                      listDS: controller.homeNewsHasDucati,
+                      listDS: controller.watchInterviewsTop3React,
                     );
                   }
                 },
               ),
-
-              const SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,)
-                  ],
-                ),
-              ),
-
+              _h20(),
               Obx(
-                    () {
-                  if (controller.homeNewsLetsTheGames.isEmpty) {
+                () {
+                  if (controller.watchInterviewsWhenRossi.isEmpty) {
                     return const SliverFillRemaining(
                       child: Center(child: CircularProgressIndicator()),
                     );
                   } else {
-                    return SliverListHome(
+                    return WatchListView(
                       controller: controller,
-                      listDS: controller.homeNewsLetsTheGames,
+                      listDS: controller.watchInterviewsWhenRossi,
                     );
                   }
                 },
               ),
-
-              const SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    SizedBox(height: 20,)
-                  ],
-                ),
+              _title('Latest Videos'),
+              Obx(
+                () {
+                  if (controller.watchLatesVideosItsTime.isEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return WatchListView(
+                      controller: controller,
+                      listDS: controller.watchLatesVideosItsTime,
+                    );
+                  }
+                },
+              ),
+              _h20(),
+              Obx(
+                () {
+                  if (controller.watchLatesVideosMar2024.isEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return WatchListView(
+                      controller: controller,
+                      listDS: controller.watchLatesVideosMar2024,
+                    );
+                  }
+                },
+              ),
+              _h20(),
+              Obx(
+                () {
+                  if (controller.watchLatesVideosMar12th.isEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return WatchListView(
+                      controller: controller,
+                      listDS: controller.watchLatesVideosMar12th,
+                    );
+                  }
+                },
+              ),
+              _title('MotoGP-Podcast'),
+              Obx(
+                () {
+                  if (controller.watchMotoGPPodcastAlbert.isEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return WatchListView(
+                      controller: controller,
+                      listDS: controller.watchMotoGPPodcastAlbert,
+                    );
+                  }
+                },
+              ),
+              _h20(),
+              Obx(
+                () {
+                  if (controller.watchMotoGPPodcastFranco.isEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return WatchListView(
+                      controller: controller,
+                      listDS: controller.watchMotoGPPodcastFranco,
+                    );
+                  }
+                },
+              ),
+              _h20(),
+              Obx(
+                () {
+                  if (controller.watchMotoGPPodcastPecco.isEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return WatchListView(
+                      controller: controller,
+                      listDS: controller.watchMotoGPPodcastPecco,
+                    );
+                  }
+                },
+              ),
+              _title('Must-See'),
+              Obx(
+                () {
+                  if (controller.watchMustSeeBestMotoGP.isEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return WatchListView(
+                      controller: controller,
+                      listDS: controller.watchMustSeeBestMotoGP,
+                    );
+                  }
+                },
+              ),
+              _h20(),
+              Obx(
+                () {
+                  if (controller.watchMustSeeBigDrama.isEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return WatchListView(
+                      controller: controller,
+                      listDS: controller.watchMustSeeBigDrama,
+                    );
+                  }
+                },
+              ),
+              _h20(),
+              Obx(
+                () {
+                  if (controller.watchMustSeeBestTheEmotion.isEmpty) {
+                    return const SliverFillRemaining(
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  } else {
+                    return WatchListView(
+                      controller: controller,
+                      listDS: controller.watchMustSeeBestTheEmotion,
+                    );
+                  }
+                },
               ),
             ],
           ),
@@ -240,7 +299,32 @@ class WatchView extends StatelessWidget {
     );
   }
 
-  Row _homeTitle(String text) {
+  Widget _title(String text) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 20),
+        child: Column(
+          children: [
+            _watchTitle(text),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _h20() {
+    return const SliverToBoxAdapter(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 20,
+          )
+        ],
+      ),
+    );
+  }
+
+  Row _watchTitle(String text) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -249,28 +333,11 @@ class WatchView extends StatelessWidget {
           style: const TextStyle(
               color: Colors.black, fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        Image.asset(ImageAssest.arrowRight, height: 28,),
-      ],
-    );
-  }
-  Container _pictureAsianFacific(String image, double height) {
-    return Container(
-      height: height,
-      color: const Color(0xff000000),
-      child: Align(
-        alignment: Alignment.center,
-        child: SizedBox(
-          child: PageView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              Image.asset(
-                image,
-                fit: BoxFit.cover,
-              )
-            ],
-          ),
+        Image.asset(
+          ImageAssest.arrowRight,
+          height: 28,
         ),
-      ),
+      ],
     );
   }
 }
