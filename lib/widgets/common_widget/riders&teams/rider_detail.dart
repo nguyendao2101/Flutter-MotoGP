@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_moto_gp/widgets/common_widget/riders&teams/riders_and_teams_main_view.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../../../view/main_screen_user_view.dart';
+import '../../../view/results_view.dart';
 import '../../common/image_extention.dart';
 
 class RiderDetailScreen extends StatelessWidget {
@@ -9,6 +14,9 @@ class RiderDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String team = rider['Team'];
+    String formattedTeam =
+    team.length > 15 ? '${team.substring(0, 18)}...' : team;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -34,254 +42,219 @@ class RiderDetailScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Stack(
-              children: [
-                // Gradient background
-                Container(
-                  height: 900, // Đặt chiều cao cố định để tránh lỗi
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.black,
-                        Colors.blueAccent.withOpacity(0.8)
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Stack(
+            Container(
+              height: 900, // Đặt chiều cao cố định để tránh lỗi
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black,
+                    Colors.blueAccent.withOpacity(0.8)
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    // Hình ảnh của rider
+                    rider['ImageRacer'] != ''
+                        ? Image.network(
+                      rider['ImageRacer'],
+                      height: 200,
+                      width: 300,
+                    )
+                        : const Icon(Icons.person, size: 250, color: Colors.grey),
+                    const SizedBox(height: 20),
+                    // Thông tin của rider
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        // Hình ảnh của rider
+                        Text(
+                          '#${rider['Id']}',
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          rider['Name'],
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.network(
+                              rider['ImageCountry'],
+                              height: 18,
+                            ),
+                            _sizeBoxW4(),
+                            Text(
+                              rider['Country'],
+                              style: const TextStyle(
+                                  fontSize: 18, color: Colors.white),
+                            ),
+                            _sizeBoxW4(),
+                            const Text(
+                              '|',
+                              style: TextStyle(
+                                  color: Colors.grey, fontSize: 18),
+                            ),
+                            _sizeBoxW4(),
+                            Text(
+                              formattedTeam,
+                              style: const TextStyle(
+                                  fontSize: 18, color: Colors.white),
+                            ),
 
-
-                        Positioned(
-                          top: -120,
-                          left: 10,
-                          child: rider['ImageRacer'] != ''
-                            ? Image.network(
-                          rider['ImageRacer'],
-                          height: 600,
-                          width: 400,
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      color: const Color(0xff4A4947),
+                      width: MediaQuery.of(context).size.width,
+                      height: 2,
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        Image.asset(
+                          ImageAssest.redFlag,
+                          height: 30,
+                        ),
+                        const SizedBox(width: 10),
+                        const Text(
+                          'Current Season',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         )
-                            : const Icon(Icons.person,
-                            size: 250, color: Colors.grey),),
-                        // Thông tin của rider
-                        Positioned(
-                          top: 310,
-                          left: 50,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                '#${rider['Id']}',
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                rider['Name'],
-                                style: const TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Image.network(
-                                    rider['ImageCountry'],
-                                    height: 18,
-                                  ),
-                                  _sizeBoxW4(),
-                                  Text(
-                                    rider['Country'],
-                                    style: const TextStyle(
-                                        fontSize: 18, color: Colors.white),
-                                  ),
-                                  _sizeBoxW4(),
-                                  const Text(
-                                    '|',
-                                    style: TextStyle(
-                                        color: Colors.grey, fontSize: 18),
-                                  ),
-                                  _sizeBoxW4(),
-                                  Text(
-                                    rider['Team'],
-                                    style: const TextStyle(
-                                        fontSize: 18, color: Colors.white),
-                                  ),
-
-                                ],
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          top: 490,
-                          left: 2,
-                          child: Container(
-                            height: 130,
-                            width: 360,
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 39, 33, 33),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Center(
-                                child: Row(
-                                  children: [
-                                    _currentSeason(
-                                        'POSITION', rider['Position'].toString()),
-                                    _verticalDivider(),
-                                    _currentSeason(
-                                        'POINTS', rider['Points'].toString()),
-                                    _verticalDivider(),
-                                    _currentSeason('VICTORIES',
-                                        rider['Victories'].toString()),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 440,
-                          left: 2,
-                          child: Container(
-                            color: const Color(0xff4A4947),
-                            width: MediaQuery.of(context).size.width, // Đặt chiều rộng tùy ý
-                            height: 2, // Đặt chiều cao tùy ý
-                          ),
-                        ),
-
-                        Positioned(
-                          top: 450,
-                          left: 0,
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Container(
+                      height: 130,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 39, 33, 33),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Center(
                           child: Row(
                             children: [
-                              Image.asset(
-                                ImageAssest.redFlag,
-                                height: 30,
-                              ),
-                              const Text(
-                                'Current Season',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                              )
+                              _currentSeason('POSITION', rider['Position'].toString()),
+                              _verticalDivider(),
+                              _currentSeason('POINTS', rider['Points'].toString()),
+                              _verticalDivider(),
+                              _currentSeason('VICTORIES', rider['Victories'].toString()),
                             ],
                           ),
                         ),
-                        Positioned(
-                          top: 640,
-                          right: 20,
-                          child: InkWell(
-                            onTap: () {
-                              // Get.to(() => const ResultsAndStandingsView());
-                            },
-                            child: Row(
-                              children: [
-                                const Text(
-                                  'R E S U L T   &   S T A N D I N G S',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 12,
-                                ),
-                                Image.asset(
-                                  ImageAssest.angleRightWhite,
-                                  height: 16,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 680,
-                          left: 2,
-                          child: InkWell(
-                            onTap: () {
-                              // Get.to(() => const RidersAndTeamsRidersView());
-                            },
-                            child: Container(
-                              height: 110,
-                              width: 360,
-                              decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 39, 33, 33),
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                            width: 50, // Độ rộng của Container
-                                            height: 50, // Độ cao của Container
-                                            child: Image.network(
-                                              rider['TeamMateImage'], // URL ảnh
-                                              fit: BoxFit
-                                                  .cover, // Đảm bảo ảnh phóng to và lấp đầy
-                                            )),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
-                                            const Text(
-                                              'TEAMMATE',
-                                              style: TextStyle(
-                                                  fontSize: 24,
-                                                  color: Colors.grey),
-                                            ),
-                                            const SizedBox(
-                                              height: 4,
-                                            ),
-                                            Text(
-                                              rider['TeamMateName'],
-                                              style: const TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                    Image.asset(
-                                      ImageAssest.angleRightWhite,
-                                      height: 20,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
+                    const SizedBox(height: 20),
+                    InkWell(
+                      onTap: () {
+                        Get.to(() =>  const MainScreenUserView(initialIndex: 3,),);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text(
+                            'R E S U L T   &   S T A N D I N G S',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Image.asset(
+                            ImageAssest.angleRightWhite,
+                            height: 16,
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    InkWell(
+                      onTap: () {
+                        Get.to(() =>  const RidersAndTeamsMainView(initialIndex: 0,));
+                      },
+                      child: Container(
+                        height: 110,
+                        width: 360,
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 39, 33, 33),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 50,
+                                    height: 50,
+                                    child: Image.network(
+                                      rider['TeamMateImage'],
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(height: 10),
+                                      const Text(
+                                        'TEAMMATE',
+                                        style: TextStyle(
+                                          fontSize: 24,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        rider['TeamMateName'],
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              Image.asset(
+                                ImageAssest.angleRightWhite,
+                                height: 20,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
+
             Padding(
               padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
               child: Row(
@@ -317,66 +290,77 @@ class RiderDetailScreen extends StatelessWidget {
 
   Padding _rowResultsTotal() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _containerResultDetail('WORLD CHAMPIONSHIPS',
-              zeroToS(rider['TotalWorldChampionships']).toString()),
-          const SizedBox(
-            width: 20,
+      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 20),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal, // Cho phép cuộn ngang
+        child: Container(
+          color: Color(0xffF8EDFF), // Đặt màu nền cho vùng cuộn ngang
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _containerResultDetail(
+                'WORLD CHAMPIONSHIPS',
+                zeroToS(rider['TotalWorldChampionships']).toString(),
+              ),
+              const SizedBox(width: 20),
+              _containerResultDetail(
+                'VICTORIES', zeroToS(rider['TotalVictories']).toString(),
+              ),
+              const SizedBox(width: 20),
+              _containerResultDetail(
+                'PODIUMS', zeroToS(rider['TotalPodiums']).toString(),
+              ),
+              const SizedBox(width: 20),
+              _containerResultDetail(
+                'POLES', zeroToS(rider['TotalPoles']).toString(),
+              ),
+              const SizedBox(width: 20),
+              _containerResultDetail(
+                'RACES', zeroToS(rider['TotalRaces']).toString(),
+              ),
+            ],
           ),
-          _containerResultDetail(
-              'VICTORIES', zeroToS(rider['TotalVictories']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'PODIUMS', zeroToS(rider['TotalPodiums']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'POLES', zeroToS(rider['TotalPoles']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'RACES', zeroToS(rider['TotalRaces']).toString()),
-        ],
+        ),
       ),
     );
   }
 
+
   Padding _rowResultsMotoGP() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _containerResultDetail('WORLD CHAMPIONSHIPS',
-              zeroToS(rider['MotoGPWorldChampionships']).toString()),
-          const SizedBox(
-            width: 20,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal, // Cho phép cuộn ngang
+        child: Container(
+          color: const Color(0xffF8EDFF),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _containerResultDetail('WORLD CHAMPIONSHIPS',
+                  zeroToS(rider['MotoGPWorldChampionships']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'VICTORIES', zeroToS(rider['MotoGPVictories']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'PODIUMS', zeroToS(rider['MotoGPPodiums']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'POLES', zeroToS(rider['MotoGPPoles']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'RACES', zeroToS(rider['MotoGPRaces']).toString()),
+            ],
           ),
-          _containerResultDetail(
-              'VICTORIES', zeroToS(rider['MotoGPVictories']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'PODIUMS', zeroToS(rider['MotoGPPodiums']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'POLES', zeroToS(rider['MotoGPPoles']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'RACES', zeroToS(rider['MotoGPRaces']).toString()),
-        ],
+        ),
       ),
     );
   }
@@ -384,32 +368,38 @@ class RiderDetailScreen extends StatelessWidget {
   Padding _rowResultsMoto2() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _containerResultDetail('WORLD CHAMPIONSHIPS',
-              zeroToS(rider['Moto2WorldChampionships']).toString()),
-          const SizedBox(
-            width: 20,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal, // Cho phép cuộn ngang
+        child: Container(
+          color: const Color(0xffF8EDFF),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _containerResultDetail('WORLD CHAMPIONSHIPS',
+                  zeroToS(rider['Moto2WorldChampionships']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'VICTORIES', zeroToS(rider['Moto2Victories']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'PODIUMS', zeroToS(rider['Moto2Podiums']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'POLES', zeroToS(rider['Moto2Poles']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'RACES', zeroToS(rider['Moto2Races']).toString()),
+            ],
           ),
-          _containerResultDetail(
-              'VICTORIES', zeroToS(rider['Moto2Victories']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'PODIUMS', zeroToS(rider['Moto2Podiums']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'POLES', zeroToS(rider['Moto2Poles']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'RACES', zeroToS(rider['Moto2Races']).toString()),
-        ],
+        ),
       ),
     );
   }
@@ -419,32 +409,38 @@ class RiderDetailScreen extends StatelessWidget {
   Padding _rowResultsMoto3() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _containerResultDetail('WORLD CHAMPIONSHIPS',
-              zeroToS(rider['Moto3WorldChampionships']).toString()),
-          const SizedBox(
-            width: 20,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal, // Cho phép cuộn ngang
+        child: Container(
+          color: const Color(0xffF8EDFF),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _containerResultDetail('WORLD CHAMPIONSHIPS',
+                  zeroToS(rider['Moto3WorldChampionships']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'VICTORIES', zeroToS(rider['Moto3Victories']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'PODIUMS', zeroToS(rider['Moto3Podiums']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'POLES', zeroToS(rider['Moto3Poles']).toString()),
+              const SizedBox(
+                width: 20,
+              ),
+              _containerResultDetail(
+                  'RACES', zeroToS(rider['Moto3Races']).toString()),
+            ],
           ),
-          _containerResultDetail(
-              'VICTORIES', zeroToS(rider['Moto3Victories']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'PODIUMS', zeroToS(rider['Moto3Podiums']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'POLES', zeroToS(rider['Moto3Poles']).toString()),
-          const SizedBox(
-            width: 20,
-          ),
-          _containerResultDetail(
-              'RACES', zeroToS(rider['Moto3Races']).toString()),
-        ],
+        ),
       ),
     );
   }
@@ -453,7 +449,7 @@ class RiderDetailScreen extends StatelessWidget {
     String displayText = text.length > 7 ? '${text.substring(0, 7)}...' : text;
     return Container(
       height: 100,
-      width: 60,
+      width: 100,
       decoration: BoxDecoration(
         color: Colors.white, // Màu nền của Container
         borderRadius: BorderRadius.circular(6), // Bo góc
@@ -524,7 +520,7 @@ class RiderDetailScreen extends StatelessWidget {
 
   Widget _currentSeason(String name, String number) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 8),
       child: Column(
         children: [
           Text(

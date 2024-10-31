@@ -10,7 +10,8 @@ import '../widgets/common/image_extention.dart';
 import 'calendar_view.dart';
 
 class MainScreenUserView extends StatefulWidget {
-  const MainScreenUserView({super.key});
+  final int initialIndex;
+  const MainScreenUserView({super.key, required this.initialIndex});
 
   @override
   State<MainScreenUserView> createState() => _HomeUserViewState();
@@ -25,7 +26,7 @@ class _HomeUserViewState extends State<MainScreenUserView>
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 5, vsync: this, initialIndex: 0);
+    tabController = TabController(length: 5, vsync: this, initialIndex: widget.initialIndex);
 
     tabController?.addListener(() {
       selectTab = tabController?.index ?? 0;

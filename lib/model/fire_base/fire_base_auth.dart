@@ -80,7 +80,7 @@ class FirAuth {
           if (userRole == 'admin') {
             // Get.offAll(() => const HomeScreenAdmin());
           } else {
-            Get.offAll(() => const MainScreenUserView());
+            Get.offAll(() => const MainScreenUserView(initialIndex: 0,));
           }
         } else {
           print('Không tìm thấy dữ liệu người dùng.');
