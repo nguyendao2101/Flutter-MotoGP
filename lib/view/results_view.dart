@@ -3,7 +3,8 @@ import 'package:flutter_moto_gp/widgets/common_widget/results&standings/results_
 import 'package:flutter_moto_gp/widgets/common_widget/results&standings/standings_main_view.dart';
 
 class ResultsView extends StatefulWidget {
-  const ResultsView({super.key});
+  final int initialIndex;
+  const ResultsView({super.key, required this.initialIndex});
 
   @override
   State<ResultsView> createState() => _ResultsAndStandingsViewState();
@@ -12,19 +13,24 @@ class ResultsView extends StatefulWidget {
 class _ResultsAndStandingsViewState extends State<ResultsView>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
+  int selectTab = 0;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 2, vsync: this, initialIndex: widget.initialIndex);
+
+    _tabController?.addListener(() {
+      selectTab = _tabController?.index ?? 0;
+      setState(() {});
+    });
   }
 
   @override
   void dispose() {
-    _tabController?.dispose();
     super.dispose();
+    _tabController?.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +41,7 @@ class _ResultsAndStandingsViewState extends State<ResultsView>
             floating: true,
             snap: true,
             pinned: true,
+            automaticallyImplyLeading: false,
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(
                 fit: StackFit.expand,

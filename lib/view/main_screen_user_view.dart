@@ -44,6 +44,7 @@ class _HomeUserViewState extends State<MainScreenUserView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -71,7 +72,7 @@ class _HomeUserViewState extends State<MainScreenUserView>
           HomeView(),
           WatchView(),
           const CalendarView(),
-          const ResultsView(),
+          const ResultsView(initialIndex: 0,),
           const MoreView()
         ],
       ),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../../view/results_view.dart';
 
 class CalendarDetail extends StatelessWidget {
   final Map<String, dynamic> calendar;
@@ -154,8 +158,8 @@ class CalendarDetail extends StatelessWidget {
                                   children: [
                                     ElevatedButton(
                                       onPressed: () {
-                                        // Get.to(() =>
-                                        // const ResultsAndStandingsResultsView());
+                                        Get.to(() =>
+                                        const ResultsView(initialIndex: 0,));
                                       },
                                       style: ElevatedButton.styleFrom(
                                         foregroundColor: Colors.white,
@@ -181,8 +185,8 @@ class CalendarDetail extends StatelessWidget {
                                     ),
                                     ElevatedButton(
                                       onPressed: () {
-                                        // Get.to(() =>
-                                        // const ResultsAndStandingsStandingsView());
+                                        Get.to(() =>
+                                        const ResultsView(initialIndex: 1,));
                                       },
                                       style: ElevatedButton.styleFrom(
                                         foregroundColor: Colors.white,
@@ -207,26 +211,6 @@ class CalendarDetail extends StatelessWidget {
                                 ),
                                 const SizedBox(
                                   height: 12,
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    foregroundColor: Colors.white,
-                                    backgroundColor: Colors.red,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 30,
-                                      vertical: 20,
-                                    ),
-                                  ),
-                                  child: const Text(
-                                    'REPLAYS',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  ),
                                 ),
                               ],
                             ),

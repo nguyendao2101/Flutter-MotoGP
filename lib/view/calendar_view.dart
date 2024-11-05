@@ -48,6 +48,7 @@ class _CalendarViewState extends State<CalendarView>
           SliverAppBar(
             expandedHeight: 10, // Chiều cao tối đa của SliverAppBar
             pinned: true, // Giữ lại trên đầu khi cuộn lên
+            automaticallyImplyLeading: false,
             flexibleSpace: Stack(
               children: [
                 Container(
